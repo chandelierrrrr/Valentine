@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe4e1;
+            font-family: Arial, sans-serif;
+        }
+
+        .gif {
+            width: 300px;
+            height: auto;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .no {
+            background-color: #FF6347;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://media1.tenor.com/m/K_E6ORTmXMoAAAAC/milk-and-mocha-love.gif alt="Will you be my Valentine?" class="gif">
+    <div class="button-container">
+        <button class="yes">Yes</button>
+        <button class="no">No</button>
+    </div>
+
+    <script>
+        const noButton = document.querySelector('.no');
+        const yesButton = document.querySelector('.yes');
+        const gif = document.querySelector('.gif');
+
+        const moveNoButton = () => {
+            const positions = [
+                { top: '10px', left: '10px' },
+                { top: '10px', right: '10px' },
+                { bottom: '10px', left: '10px' },
+                { bottom: '10px', right: '10px' }
+            ];
+
+            const randomPosition = positions[Math.floor(Math.random() * positions.length)];
+            noButton.style.top = randomPosition.top || '';
+            noButton.style.left = randomPosition.left || '';
+            noButton.style.right = randomPosition.right || '';
+            noButton.style.bottom = randomPosition.bottom || '';
+
+            const currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
+            if (currentSize > 5) {
+                noButton.style.fontSize = `px`;
+            } else {
+                noButton.style.display = 'none';
+            }
+        };
+
+        noButton.addEventListener('click', moveNoButton);
+
+        yesButton.addEventListener('click', () => {
+            gif.src = 'https://media1.tenor.com/m/tl4tMev7ICEAAAAC/instagram-zefexwoo-shaurya.gif'; // Replace with the second uploaded image's path
+        });
+    </script>
+</body>
+</html>
